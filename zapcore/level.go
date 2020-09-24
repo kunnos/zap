@@ -40,6 +40,8 @@ const (
 	// WarnLevel logs are more important than Info, but don't need individual
 	// human review.
 	WarnLevel
+	// HookLevel send msg to hook
+	HookLevel
 	// ErrorLevel logs are high-priority. If an application is running smoothly,
 	// it shouldn't generate any error-level logs.
 	ErrorLevel
@@ -64,6 +66,8 @@ func (l Level) String() string {
 		return "info"
 	case WarnLevel:
 		return "warn"
+	case HookLevel:
+		return "hook"
 	case ErrorLevel:
 		return "error"
 	case DPanicLevel:
@@ -88,6 +92,8 @@ func (l Level) CapitalString() string {
 		return "INFO"
 	case WarnLevel:
 		return "WARN"
+	case HookLevel:
+		return "HOOK"
 	case ErrorLevel:
 		return "ERROR"
 	case DPanicLevel:
@@ -131,6 +137,8 @@ func (l *Level) unmarshalText(text []byte) bool {
 		*l = InfoLevel
 	case "warn", "WARN":
 		*l = WarnLevel
+	case "hook", "HOOK":
+		*l = HookLevel
 	case "error", "ERROR":
 		*l = ErrorLevel
 	case "dpanic", "DPANIC":
