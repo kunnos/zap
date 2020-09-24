@@ -27,6 +27,7 @@ var (
 		DebugLevel:  color.Magenta,
 		InfoLevel:   color.Blue,
 		WarnLevel:   color.Yellow,
+		HookLevel:   color.Yellow,
 		ErrorLevel:  color.Red,
 		DPanicLevel: color.Red,
 		PanicLevel:  color.Red,

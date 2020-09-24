@@ -108,6 +108,11 @@ func (s *SugaredLogger) Warn(args ...interface{}) {
 	s.log(WarnLevel, "", args, nil)
 }
 
+// Hook uses fmt.Sprint to construct and log a message.
+func (s *SugaredLogger) Hook(args ...interface{}) {
+	s.log(HookLevel, "", args, nil)
+}
+
 // Error uses fmt.Sprint to construct and log a message.
 func (s *SugaredLogger) Error(args ...interface{}) {
 	s.log(ErrorLevel, "", args, nil)
@@ -151,6 +156,11 @@ func (s *SugaredLogger) Infof(template string, args ...interface{}) {
 // Warnf uses fmt.Sprintf to log a templated message.
 func (s *SugaredLogger) Warnf(template string, args ...interface{}) {
 	s.log(WarnLevel, template, args, nil)
+}
+
+// Hookf uses fmt.Sprintf to log a templated message.
+func (s *SugaredLogger) Hookf(template string, args ...interface{}) {
+	s.log(HookLevel, template, args, nil)
 }
 
 // Errorf uses fmt.Sprintf to log a templated message.
@@ -202,6 +212,12 @@ func (s *SugaredLogger) Infow(msg string, keysAndValues ...interface{}) {
 // pairs are treated as they are in With.
 func (s *SugaredLogger) Warnw(msg string, keysAndValues ...interface{}) {
 	s.log(WarnLevel, msg, nil, keysAndValues)
+}
+
+// Hookw logs a message with some additional context. The variadic key-value
+// pairs are treated as they are in With.
+func (s *SugaredLogger) Hookw(msg string, keysAndValues ...interface{}) {
+	s.log(HookLevel, msg, nil, keysAndValues)
 }
 
 // Errorw logs a message with some additional context. The variadic key-value

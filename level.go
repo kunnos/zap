@@ -21,8 +21,8 @@
 package zap
 
 import (
-	"go.uber.org/atomic"
 	"github.com/kunnos/zap/zapcore"
+	"go.uber.org/atomic"
 )
 
 const (
@@ -34,6 +34,8 @@ const (
 	// WarnLevel logs are more important than Info, but don't need individual
 	// human review.
 	WarnLevel = zapcore.WarnLevel
+	// HookLevel send log to hook
+	HookLevel = zapcore.HookLevel
 	// ErrorLevel logs are high-priority. If an application is running smoothly,
 	// it shouldn't generate any error-level logs.
 	ErrorLevel = zapcore.ErrorLevel

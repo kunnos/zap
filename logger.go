@@ -201,6 +201,14 @@ func (log *Logger) Warn(msg string, fields ...Field) {
 	}
 }
 
+// Hook logs a message at WarnLevel. The message includes any fields passed
+// at the log site, as well as any fields accumulated on the logger.
+func (log *Logger) Hook(msg string, fields ...Field) {
+	if ce := log.check(HookLevel, msg); ce != nil {
+		ce.Write(fields...)
+	}
+}
+
 // Error logs a message at ErrorLevel. The message includes any fields passed
 // at the log site, as well as any fields accumulated on the logger.
 func (log *Logger) Error(msg string, fields ...Field) {

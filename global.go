@@ -145,6 +145,8 @@ func levelToFunc(logger *Logger, lvl zapcore.Level) (func(string, ...Field), err
 		return logger.Info, nil
 	case WarnLevel:
 		return logger.Warn, nil
+	case HookLevel:
+		return logger.Hook, nil
 	case ErrorLevel:
 		return logger.Error, nil
 	case DPanicLevel:
