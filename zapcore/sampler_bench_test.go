@@ -25,10 +25,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/stretchr/testify/assert"
-	"go.uber.org/atomic"
 	"github.com/kunnos/zap/internal/ztest"
 	. "github.com/kunnos/zap/zapcore"
+	"github.com/stretchr/testify/assert"
+	"go.uber.org/atomic"
 )
 
 var counterTestCases = [][]string{

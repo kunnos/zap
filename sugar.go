@@ -127,6 +127,15 @@ func (s *SugaredLogger) Exit(code int, args ...interface{}) {
 	s.base.exitFunc(code)
 }
 
+// Exit0 uses fmt.Sprint to construct and log a message.
+func (s *SugaredLogger) Exit0(args ...interface{}) {
+	s.log(ErrorLevel, "", args, nil)
+	if s.base.exitFunc == nil {
+		s.base.exitFunc = os.Exit
+	}
+	s.base.exitFunc(0)
+}
+
 // DPanic uses fmt.Sprint to construct and log a message. In development, the
 // logger then panics. (See DPanicLevel for details.)
 func (s *SugaredLogger) DPanic(args ...interface{}) {
@@ -175,6 +184,15 @@ func (s *SugaredLogger) Exitf(code int, template string, args ...interface{}) {
 		s.base.exitFunc = os.Exit
 	}
 	s.base.exitFunc(code)
+}
+
+// Exit0f uses fmt.Sprintf to log a templated message.
+func (s *SugaredLogger) Exit0f(template string, args ...interface{}) {
+	s.log(ErrorLevel, template, args, nil)
+	if s.base.exitFunc == nil {
+		s.base.exitFunc = os.Exit
+	}
+	s.base.exitFunc(0)
 }
 
 // DPanicf uses fmt.Sprintf to log a templated message. In development, the
@@ -234,6 +252,16 @@ func (s *SugaredLogger) Exitw(code int, msg string, keysAndValues ...interface{}
 		s.base.exitFunc = os.Exit
 	}
 	s.base.exitFunc(code)
+}
+
+// Exit0w logs a message with some additional context. The variadic key-value
+// pairs are treated as they are in With.
+func (s *SugaredLogger) Exit0w(msg string, keysAndValues ...interface{}) {
+	s.log(ErrorLevel, msg, nil, keysAndValues)
+	if s.base.exitFunc == nil {
+		s.base.exitFunc = os.Exit
+	}
+	s.base.exitFunc(0)
 }
 
 // DPanicw logs a message with some additional context. In development, the

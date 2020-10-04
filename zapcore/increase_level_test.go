@@ -24,11 +24,11 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/stretchr/testify/assert"
-	"github.com/stretchr/testify/require"
 	"github.com/kunnos/zap"
 	. "github.com/kunnos/zap/zapcore"
 	"github.com/kunnos/zap/zaptest/observer"
+	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 )
 
 func TestIncreaseLevel(t *testing.T) {

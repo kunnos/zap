@@ -29,8 +29,8 @@ import (
 	richErrors "github.com/pkg/errors"
 	"github.com/stretchr/testify/assert"
 
-	"go.uber.org/multierr"
 	. "github.com/kunnos/zap/zapcore"
+	"go.uber.org/multierr"
 )
 
 type errTooManyUsers int
